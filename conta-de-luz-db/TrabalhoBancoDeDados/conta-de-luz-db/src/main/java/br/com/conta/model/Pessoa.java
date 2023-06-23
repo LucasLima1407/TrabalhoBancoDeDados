@@ -5,22 +5,22 @@ import br.com.conta.DAO.TipoPessoaDAO;
 public class Pessoa extends GenericModel {
 
     static private TipoPessoaDAO tipoPessoaDAO = new TipoPessoaDAO();
-    private final String nome;
-    private final String cpf;
+    private String nome;
+    private String cpf;
 
     private String cnpj;
 
-    private final Integer tipoPessoa;
+    private TipoPessoa tipoPessoa;
 
 
-    public Pessoa(Integer id, String nome, String cpf, Integer tipoPessoa) {
+    public Pessoa(Integer id, String nome, String cpf, TipoPessoa tipoPessoa) {
         this.nome = nome;
         this.cpf = cpf;
         this.tipoPessoa = tipoPessoa;
         super.setId(id);
     }
 
-    public Pessoa(Integer id, String nome, String cpf, Integer tipoPessoa, String cnpj ) throws Exception {
+    public Pessoa(Integer id, String nome, String cpf, TipoPessoa tipoPessoa, String cnpj ) throws Exception {
         this(id, nome, cpf, tipoPessoa);
 
         this.cnpj = cnpj;
@@ -39,17 +39,17 @@ public class Pessoa extends GenericModel {
         return cnpj;
     }
 
-    public Integer getTipoPessoa() {
-        return tipoPessoa;
+    public Integer getIdTipoPessoa() {
+        return tipoPessoa.getId();
     }
 
     @Override
     public String toString() {
-        return "Pessoa { \n" +
-                "\t id= '" + this.getId() + "' \n" +
-                "\t nome = '" + getNome() + "' \n" +
-                "\t cpf = '" + getCpf() + "' \n" +
-                "\t tipo_pessoa =  " + tipoPessoaDAO.selectTipoPessoaById(tipoPessoa) + "\n" +
+        return "pessoa { \n" +
+                "\t id= '" + this.getId() + "\' \n" +
+                "\t nome = '" + getNome() + "\' \n" +
+                "\t cpf = '" + getCpf() + "\' \n"  +
+                "\t tipo_pessoa =  " + tipoPessoa + "\n" +
                 "\t }";
     }
 }

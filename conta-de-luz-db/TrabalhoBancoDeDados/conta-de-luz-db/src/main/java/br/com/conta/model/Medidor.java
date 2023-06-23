@@ -2,18 +2,19 @@ package br.com.conta.model;
 
 public class Medidor extends GenericModel {
     private String descricao;
-    private Interger rota_id;
-    private Interger poste_id;
+    private Rota rota_id;
+    private Poste poste_id;
 
-    public Medidor(String descricao, Interger rota_id, Interger poste_id) {
+    public Medidor(String descricao, Rota rota_id, Poste poste_id) {
         this.descricao = descricao;
         this.rota_id = rota_id;
         this.poste_id = poste_id;
     }
-    public Medidor(Interger id,String descricao, Interger rota_id, Interger poste_id) {
+    public Medidor(int id,String descricao, Rota rota_id,Poste poste_id) {
         this.descricao = descricao;
         this.rota_id = rota_id;
         this.poste_id = poste_id;
+        super.setId(id);
     }
 
     public String getDescricao() {
@@ -24,19 +25,19 @@ public class Medidor extends GenericModel {
         this.descricao = descricao;
     }
 
-    public Interger getRota_id() {
-        return rota_id;
+    public int getRotaId() {
+        return rota_id.getId();
     }
 
-    public void setRota_id(Interger rota_id) {
+    public void setRota_id(Rota rota_id) {
         this.rota_id = rota_id;
     }
 
-    public Interger getPoste_id() {
-        return poste_id;
+    public int getPoste_id() {
+        return poste_id.getId();
     }
 
-    public void setPoste_id(Interger poste_id) {
+    public void setPosteId(Poste poste_id) {
         this.poste_id = poste_id;
     }
     @Override
@@ -44,8 +45,8 @@ public class Medidor extends GenericModel {
         return "Medidor {" +
                 "id='" + this.getId() + "\'" +
                 "descricao='" + getDescricao() + "\'" +
-                "medidor='" + RotaDAO.selectRotaById(rota_id) + "\'" +
-                "poste='" + PosteDAO.selectTimeRotaById(poste_id) + "\'" +
+                "rota='" + getRotaId() + "\'" +
+                "poste='" + getPoste_id() + "\'" +
                 '}';
     }
 }
