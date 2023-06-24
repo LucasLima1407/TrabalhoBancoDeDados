@@ -1,21 +1,19 @@
 package br.com.conta.model;
 
-import br.com.conta.DAO.RotaDAO;
-
 import java.sql.Timestamp;
 public class TarefaRota extends  GenericModel {
     private String obervacao;
-    private Timestamp data_inicio;
-    private Timestamp data_final;
+    private Timestamp dataInicio;
+    private Timestamp dataFinal;
 
-    private Rota rota_model;
+    private Rota rotaId;
 
 
-    public TarefaRota(Integer id, String obervacao, Timestamp data_inicio, Timestamp data_final, Rota rota_model) {
+    public TarefaRota(Integer id, String obervacao, Timestamp dataInicio, Timestamp dataFinal, Rota rotaId) {
         this.obervacao = obervacao;
-        this.data_inicio = data_inicio;
-        this.data_final = data_final;
-        this.rota_model = rota_model;
+        this.dataInicio = dataInicio;
+        this.dataFinal = dataFinal;
+        this.rotaId = rotaId;
 
         super.setId(id);
     }
@@ -25,26 +23,26 @@ public class TarefaRota extends  GenericModel {
         return obervacao;
     }
 
-    public Timestamp getData_inicio() {
-        return data_inicio;
+    public Timestamp getDataInicio() {
+        return dataInicio;
     }
 
-    public Timestamp getData_fim() {
-        return data_final;
+    public Timestamp getDataFinal() {
+        return dataFinal;
     }
 
-    public int getRotaModel() {
-        return rota_model.getId();
+    public int getRotaId() {
+        return rotaId.getId();
     }
 
     @Override
     public String toString() {
         return "tarefa_rota { \n" +
                 "\t id='" + this.getId() + "\' \n"  +
-                "\t observacao=" + obervacao + "\n" +
-                "\t data_inicio= " + data_inicio + "\n" +
-                "\t data_final="+ data_final + "\n"+
-                "\t rota = " + getRotaModel() +
+                "\t observacao=" + getObervacao() + "\n" +
+                "\t dataInicio= " + getDataInicio() + "\n" +
+                "\t dataFinal="+ getDataFinal() + "\n"+
+                "\t rota = " + getRotaId() +
                 "\t } ";
     }
 }

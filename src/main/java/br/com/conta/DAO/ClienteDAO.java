@@ -1,5 +1,7 @@
 package br.com.conta.DAO;
 import br.com.conta.model.Cliente;
+import br.com.conta.model.Pessoa;
+
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,11 +15,12 @@ public class ClienteDAO extends  ConexaoDB{
     private static final String DELETE_CLIENTE_SQL = "DELETE FROM pessoa WHERE id = ?;";
     private static final String UPDATE_CLIENTE_SQL = "UPDATE pessoa SET nome = ?, cpf = ?, cnpj = ?, tipo_pessoa_id = ? WHERE id = ?;";
 
+    PessoaDAO pessoaDAO = new PessoaDAO();
     public void insertCliente(Cliente entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_CLIENTE_SQL)) {
-            preparedStatement.setString(1, entidade.getNum_documento());
-            preparedStatement.setString(2, entidade.getNum_cliente());
-            preparedStatement.setInt(3, entidade.getPessoa_id());
+            preparedStatement.setString(1, entidade.getNumDocumento());
+            preparedStatement.setString(2, entidade.getNumCliente());
+            preparedStatement.setInt(3, entidade.getPessoaId());
         } catch (SQLException e) {
             printSQLException(e);
         } catch (ClassNotFoundException e) {
@@ -35,7 +38,8 @@ public class ClienteDAO extends  ConexaoDB{
                 String num_documento = rs.getString("num_documento");
                 String num_cliente = rs.getString("num_cliente");
                 int pessoa_id = rs.getInt("pessoa_id");
-                entidade = new Cliente(id, num_documento, num_cliente, pessoa_id);
+                Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
+                entidade = new Cliente(id, num_documento, num_cliente, pessoa);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -55,7 +59,8 @@ public class ClienteDAO extends  ConexaoDB{
                 String num_documento = rs.getString("num_documento");
                 String num_cliente = rs.getString("num_cliente");
                 int pessoa_id = rs.getInt("pessoa_id");
-                entidades.add(new Cliente(id, num_documento, num_cliente, pessoa_id));
+                Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
+                entidades.add(new Cliente(id, num_documento, num_cliente, pessoa));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -76,9 +81,9 @@ public class ClienteDAO extends  ConexaoDB{
 
     public boolean updateCliente(Cliente entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_CLIENTE_SQL)) {
-            statement.setString(1, entidade.getNum_cliente());
-            statement.setString(2, entidade.getNum_documento());
-            statement.setInt(3, entidade.getPessoa_id());
+            statement.setString(1, entidade.getNumCliente());
+            statement.setString(2, entidade.getNumDocumento());
+            statement.setInt(3, entidade.getPessoaId());
             statement.setInt(4, entidade.getId());
 
             return statement.executeUpdate() > 0;

@@ -6,17 +6,17 @@ CREATE TABLE tipo_fase(
 CREATE TABLE classe(
                        id SERIAL PRIMARY KEY,
                        descricao VARCHAR(45),
-                       id_tipo_fase INT REFERENCES tipo_fase(id)
+                       tipo_fase_id INT REFERENCES tipo_fase(id)
 );
 
 
 CREATE TABLE tarifa(
                        id SERIAL PRIMARY KEY,
                        taxa VARCHAR(45),
-                       classe INT REFERENCES classe(id),
+                       classe_id INT REFERENCES classe(id),
                        lei VARCHAR(45) not null,
-                       data_inicio VARCHAR(45) not null,
-                       data_final VARCHAR(45) not null
+                       dataInicio VARCHAR(45) not null,
+                       dataFinal VARCHAR(45) not null
 );
 
 CREATE TABLE tipo_pessoa(
@@ -35,14 +35,14 @@ CREATE TABLE pessoa(
 CREATE TABLE funcionario(
                             id SERIAL PRIMARY KEY,
                             codigo_funcional VARCHAR(45) not null,
-                            pessoa_id INT REFERENCES pessoa(id)
+                            pessoaId INT REFERENCES pessoa(id)
 );
 
 CREATE TABLE cliente (
                          id SERIAL PRIMARY KEY,
                          num_documento VARCHAR(45) not null unique,
                          num_cliente VARCHAR(45) not null unique,
-                         pessoa_id INT REFERENCES  pessoa(id)
+                         pessoaId INT REFERENCES  pessoa(id)
 );
 
 
@@ -64,17 +64,17 @@ CREATE  TABLE  medidor(
                           id SERIAL PRIMARY KEY,
                           descricao  VARCHAR(45),
                           roda_id INT REFERENCES rota(id),
-                          poste_id INT REFERENCES poste(id)
+                          posteId INT REFERENCES poste(id)
 );
 
 
 CREATE TABLE tarefa_rota(
                             id SERIAL PRIMARY KEY,
                             observacao VARCHAR(45),
-                            data_inicio TIMESTAMP,
-                            data_fim TIMESTAMP,
+                            dataInicio TIMESTAMP,
+                            dataFim TIMESTAMP,
                             tarefa_rotcao VARCHAR (45),
-                            rota_id INT REFERENCES rota(id)
+                            rotaId INT REFERENCES rota(id)
 );
 
 CREATE TABLE time_rota (
@@ -87,7 +87,7 @@ CREATE TABLE medicao(
                         id SERIAL PRIMARY KEY,
                         mes VARCHAR(45),
                         ano VARCHAR(45),
-                        data_medicao timestamp,
+                        dataMedicao timestamp,
                         consumo varchar(45),
                         medidor_id INT REFERENCES medidor(id),
                         time_rota_id INT REFERENCES  time_rota(id)
@@ -104,7 +104,7 @@ CREATE TABLE cobranca(
 CREATE TABLE contrato (
                           id SERIAL PRIMARY KEY,
                           descricao VARCHAR(45),
-                          data_inicio timestamp,
+                          dataInicio timestamp,
                           data_criacao timestamp,
                           medidor_id int references medidor(id),
                           class_id int references classe(id),

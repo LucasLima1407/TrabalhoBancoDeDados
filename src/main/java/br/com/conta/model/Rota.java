@@ -20,7 +20,7 @@ public class Rota extends GenericModel{
     public String toString() {
         return "Rota { \n" +
                 "\t id= '" + this.getId() + "\' \n"  +
-                "\t descricao ='" + descricao + "\' \n" +
+                "\t descricao ='" + getDescricao() + "\' \n" +
                 "\t } \n";
     }
 

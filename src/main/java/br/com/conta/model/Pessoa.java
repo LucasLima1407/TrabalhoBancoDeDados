@@ -10,18 +10,18 @@ public class Pessoa extends GenericModel {
 
     private String cnpj;
 
-    private TipoPessoa tipoPessoa;
+    private TipoPessoa tipoPessoaId;
 
 
-    public Pessoa(Integer id, String nome, String cpf, TipoPessoa tipoPessoa) {
+    public Pessoa(Integer id, String nome, String cpf, TipoPessoa tipoPessoaId) {
         this.nome = nome;
         this.cpf = cpf;
-        this.tipoPessoa = tipoPessoa;
+        this.tipoPessoaId = tipoPessoaId;
         super.setId(id);
     }
 
-    public Pessoa(Integer id, String nome, String cpf, TipoPessoa tipoPessoa, String cnpj ) throws Exception {
-        this(id, nome, cpf, tipoPessoa);
+    public Pessoa(Integer id, String nome, String cpf, TipoPessoa tipoPessoaId, String cnpj ) throws Exception {
+        this(id, nome, cpf, tipoPessoaId);
 
         this.cnpj = cnpj;
 
@@ -39,8 +39,8 @@ public class Pessoa extends GenericModel {
         return cnpj;
     }
 
-    public Integer getIdTipoPessoa() {
-        return tipoPessoa.getId();
+    public int getIdTipoPessoa() {
+        return tipoPessoaId.getId();
     }
 
     @Override
@@ -49,7 +49,8 @@ public class Pessoa extends GenericModel {
                 "\t id= '" + this.getId() + "\' \n" +
                 "\t nome = '" + getNome() + "\' \n" +
                 "\t cpf = '" + getCpf() + "\' \n"  +
-                "\t tipo_pessoa =  " + tipoPessoa + "\n" +
+                "\t cnpj = '" + getCnpj() + "\' \n"  +
+                "\t tipo_pessoa =  " + getIdTipoPessoa() + "\n" +
                 "\t }";
     }
 }

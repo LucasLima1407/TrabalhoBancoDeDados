@@ -2,7 +2,6 @@ package br.com.conta.DAO;
 
 import br.com.conta.model.Funcionario;
 import br.com.conta.model.Pessoa;
-import br.com.conta.model.TipoPessoa;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,10 +16,11 @@ public class FuncionarioDAO extends ConexaoDB{
     private static final String DELETE_FUNCIONARIO_SQL = "DELETE FROM funcionario WHERE id = ?;";
     private static final String UPDATE_FUNCIONARIO_SQL = "UPDATE funcionario SET codigo_funcional = ?, pessoa_id = ? WHERE id = ?;";
 
+    PessoaDAO pessoaDAO = new PessoaDAO();
     public void insertFuncionarioSQL(Funcionario entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_FUNCIONARIO_SQL)) {
-            preparedStatement.setString(1, entidade.getCodigo_funcionario());
-            preparedStatement.setInt(2, entidade.getPessoa_id());
+            preparedStatement.setString(1, entidade.getCodigoFuncionario());
+            preparedStatement.setInt(2, entidade.getPessoaId());
 
             preparedStatement.executeUpdate();
 
@@ -39,8 +39,9 @@ public class FuncionarioDAO extends ConexaoDB{
 
             while (rs.next()) {
                 String codigoFuncional = rs.getString("codigo_funcional");
-                Integer pessoa_id = rs.getInt("pessoa_id");
-                entidade = new Funcionario(id, codigoFuncional,pessoa_id );
+                int pessoa_id = rs.getInt("pessoa_id");
+                Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
+                entidade = new Funcionario(id, codigoFuncional, pessoa );
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -59,7 +60,8 @@ public class FuncionarioDAO extends ConexaoDB{
                 int id = rs.getInt("id");
                 String codigoFuncional = rs.getString("codigo_funcional");
                 int pessoa_id = rs.getInt("pessoa_id");
-                entidades.add(new Funcionario(id, codigoFuncional, pessoa_id));
+                Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
+                entidades.add(new Funcionario(id, codigoFuncional, pessoa));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -79,8 +81,8 @@ public class FuncionarioDAO extends ConexaoDB{
     }
     public boolean updateFuncionarioi(Funcionario entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_FUNCIONARIO_SQL)) {
-            statement.setString(1, entidade.getCodigo_funcionario());
-            statement.setInt(1, entidade.getPessoa_id());
+            statement.setString(1, entidade.getCodigoFuncionario());
+            statement.setInt(1, entidade.getPessoaId());
             statement.setInt(2, entidade.getId());
 
             return statement.executeUpdate() > 0;

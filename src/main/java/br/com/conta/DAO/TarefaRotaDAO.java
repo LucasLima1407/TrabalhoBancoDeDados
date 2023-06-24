@@ -2,7 +2,6 @@ package br.com.conta.DAO;
 
 import br.com.conta.model.Rota;
 import br.com.conta.model.TarefaRota;
-import br.com.conta.model.TipoPessoa;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,9 +41,9 @@ public class TarefaRotaDAO extends ConexaoDB{
     public void insertTarefaRota(br.com.conta.model.TarefaRota entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_TAREFA_ROTA_SQL)) {
             preparedStatement.setString(1, entidade.getObervacao());
-            preparedStatement.setTimestamp(2, entidade.getData_inicio());
-            preparedStatement.setTimestamp(3, entidade.getData_fim());
-            preparedStatement.setInt(4, entidade.getRotaModel());
+            preparedStatement.setTimestamp(2, entidade.getDataInicio());
+            preparedStatement.setTimestamp(3, entidade.getDataFinal());
+            preparedStatement.setInt(4, entidade.getRotaId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -114,9 +113,9 @@ public class TarefaRotaDAO extends ConexaoDB{
         try (PreparedStatement statement = prepararSQL(UPDATE_TAREFA_ROTA_SQL)) {
 
             statement.setString(1, entidade.getObervacao());
-            statement.setTimestamp(2, entidade.getData_inicio());
-            statement.setTimestamp(3, entidade.getData_fim());
-            statement.setInt(4, entidade.getRotaModel());
+            statement.setTimestamp(2, entidade.getDataInicio());
+            statement.setTimestamp(3, entidade.getDataFinal());
+            statement.setInt(4, entidade.getRotaId());
 
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {

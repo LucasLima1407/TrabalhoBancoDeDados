@@ -3,43 +3,43 @@ package br.com.conta.model;
 import br.com.conta.DAO.PessoaDAO;
 
 public class Funcionario extends GenericModel {
-    private String codigo_funcionario;
-    private int pessoa_id;
+    private String codigoFuncionario;
+    private Pessoa pessoaId;
 
     private static final PessoaDAO pessoaDAO = new PessoaDAO();
 
-    public Funcionario(String codigo_funcionario, int pessoa_id) {
-        this.codigo_funcionario = codigo_funcionario;
-        this.pessoa_id = pessoa_id;
+    public Funcionario(String codigoFuncionario, Pessoa pessoaId) {
+        this.codigoFuncionario = codigoFuncionario;
+        this.pessoaId = pessoaId;
     }
-    public Funcionario(int id, String codigo_funcionario, int pessoa_id) {
-        this.codigo_funcionario = codigo_funcionario;
-        this.pessoa_id = pessoa_id;
+    public Funcionario(int id, String codigoFuncionario, Pessoa pessoaId) {
+        this.codigoFuncionario = codigoFuncionario;
+        this.pessoaId = pessoaId;
         super.setId(id);
     }
 
-    public String getCodigo_funcionario() {
-        return codigo_funcionario;
+    public String getCodigoFuncionario() {
+        return codigoFuncionario;
     }
 
-    public void setCodigo_funcionario(String codigo_funcionario) {
-        this.codigo_funcionario = codigo_funcionario;
+    public void setCodigoFuncionario(String codigoFuncionario) {
+        this.codigoFuncionario = codigoFuncionario;
     }
 
-    public int getPessoa_id() {
-        return pessoa_id;
+    public int getPessoaId() {
+        return pessoaId.getId();
     }
 
-    public void setPessoal_id(int pessoa_id) {
-        this.pessoa_id = pessoa_id;
+    public void setPessoal_id(Pessoa pessoaId) {
+        this.pessoaId = pessoaId;
     }
 
     @Override
     public String toString() {
         return "Funcionario {" +
                 "id='" + this.getId() + "\'" +
-                "codigo_funcionario='" + getCodigo_funcionario() + "\'" +
-                "pessoa='" + pessoaDAO.selectPessoaById(pessoa_id) + "\'" +
+                "codigoFuncionario='" + getCodigoFuncionario() + "\'" +
+                "pessoa='" + getPessoaId() + "\'" +
                 '}';
     }
 }
