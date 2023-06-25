@@ -24,8 +24,7 @@ public class CobrancaDAO extends ConexaoDB {
             preparedStatement.setString(2, entidade.getAnoReferencia());
             preparedStatement.setInt(3, entidade.getTarifaModel());
             preparedStatement.setInt(4, entidade.getMedicaoModel());
-
-
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
         } catch (ClassNotFoundException e) {

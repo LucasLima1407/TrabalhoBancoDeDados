@@ -9,6 +9,13 @@ public class TarefaRota extends  GenericModel {
     private Rota rotaId;
 
 
+    public TarefaRota(String obervacao, Timestamp dataInicio, Timestamp dataFinal, Rota rotaId) {
+        this.obervacao = obervacao;
+        this.dataInicio = dataInicio;
+        this.dataFinal = dataFinal;
+        this.rotaId = rotaId;
+    }
+
     public TarefaRota(Integer id, String obervacao, Timestamp dataInicio, Timestamp dataFinal, Rota rotaId) {
         this.obervacao = obervacao;
         this.dataInicio = dataInicio;
@@ -40,8 +47,8 @@ public class TarefaRota extends  GenericModel {
         return "tarefa_rota { \n" +
                 "\t id='" + this.getId() + "\' \n"  +
                 "\t observacao=" + getObervacao() + "\n" +
-                "\t dataInicio= " + getDataInicio() + "\n" +
-                "\t dataFinal="+ getDataFinal() + "\n"+
+                "\t data_inicio_id= " + getDataInicio() + "\n" +
+                "\t data_final_id= "+ getDataFinal() + "\n"+
                 "\t rota_id = " + getRotaId() +
                 "\t } ";
     }

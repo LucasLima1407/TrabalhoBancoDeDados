@@ -2,6 +2,9 @@ package br.com.conta.util;
 
 import br.com.conta.DAO.*;
 import br.com.conta.model.*;
+
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Arrays;
 
 import java.sql.SQLException;
@@ -39,6 +42,7 @@ public class Teste {
         //Poste poste = new Poste(1,"4984534", "6749834", "679458043", "No Solo");
         //posteDAO.insertPoste(poste);
        //System.out.println(posteDAO.selectPosteById(1));
+        Poste poste = posteDAO.selectPosteById(1);
         // TipoPessoa tipoPessoa = tipopessoaDAO.selectTipoPessoaById(1);
         //Pessoa pessoa = new Pessoa(1,"Lucas", "06984803330", tipoPessoa, "675784033");
         // pessoaDAO.insertPessoa(pessoa);
@@ -62,6 +66,7 @@ public class Teste {
         //Funcionario funcionario = new Funcionario("53473932213",pessoa);
         //funcionarioDAO.insertFuncionario(funcionario);
         //System.out.print(funcionarioDAO.selectFuncionario(3));
+        Funcionario funcionario = funcionarioDAO.selectFuncionario(1);
        // Funcionario funcionario = funcionarioDAO.selectFuncionario(1);
        // Rota rota = new Rota("Joquei Clube");
        // rotaDAO.insertRota(rota);
@@ -71,5 +76,34 @@ public class Teste {
        // classeDAO.insertClasse(classe);
        // System.out.print(classeDAO.selectClasseById(1));
         Classe classe = classeDAO.selectClasseById(1);
+        //Medidor medidor = new Medidor("Medidor1", rota, poste);
+       // medidorDAO.insertMedidor(medidor);
+        //System.out.print(medidorDAO.selectMedidorById(1));
+        Medidor medidor = medidorDAO.selectMedidorById(1);
+        Timestamp ts = Timestamp.from(Instant.now());
+       // Contrato contrato = new Contrato("2024", ts, ts, medidor, classe, cliente);
+       // contratoDAO.insertContrato(contrato);
+       // System.out.print(contratoDAO.selectContratoById(1));
+       Contrato contrato = contratoDAO.selectContratoById(1);
+        //TarefaRota tarefaRota = new TarefaRota("Fazer Logo", ts, ts, rota);
+        //tarefaRotaDAO.insertTarefaRota(tarefaRota);
+        // System.out.println(tarefaRotaDAO.selectTarefaRota(1));
+        TarefaRota tarefaRota = tarefaRotaDAO.selectTarefaRota(1);
+       // TimeRota timeRota = new TimeRota(funcionario, tarefaRota);
+        //timeRotaDAO.setInsertTimeRotaSQL(timeRota);
+        //System.out.print(timeRotaDAO.selectTimeRota(1));
+        TimeRota timeRota = timeRotaDAO.selectTimeRota(1);
+       // Medicao medicao = new Medicao("Junho", "2023", ts, "Muito", medidor, timeRota);
+        //medicaoDAO.insertMedicao(medicao);
+        //System.out.print(medicaoDAO.selectMedicaoById(1));
+        Medicao medicao = medicaoDAO.selectMedicaoById(1);
+        //Tarifa tarifa = new Tarifa("ALta", classe, "8753", "14/01", "14/05", "Alta");
+        //tarifaDAO.insertTarifa(tarifa);
+        //System.out.println(tarifaDAO.selectTarifaById(1));
+        Tarifa tarifa = tarifaDAO.selectTarifaById(1);
+       // Cobranca cobranca = new Cobranca("Junho", "2023", tarifa, medicao);
+        // cobrancaDAO.insertCobranca(cobranca);
+        //System.out.println(cobrancaDAO.selectCobrancaById(1));
+        Cobranca cobranca = cobrancaDAO.selectCobrancaById(1);
     }
 }

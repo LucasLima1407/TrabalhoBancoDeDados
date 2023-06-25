@@ -11,17 +11,17 @@ public class Contrato extends GenericModel {
     private Classe classeId;
     private Cliente clienteId;
 
-    public Contrato(String descricao, Timestamp data_inicio, Timestamp dataCriacao, Medidor medidorId, Classe classeId, Cliente clienteId) {
+    public Contrato(String descricao, Timestamp dataInicio, Timestamp dataCriacao, Medidor medidorId, Classe classeId, Cliente clienteId) {
         this.descricao = descricao;
-        this.dataInicio = data_inicio;
+        this.dataInicio = dataInicio;
         this.dataCriacao = dataCriacao;
         this.medidorId = medidorId;
         this.classeId = classeId;
         this.clienteId = clienteId;
     }
-    public Contrato(int id, String descricao, Timestamp data_inicio, Timestamp dataCriacao, Medidor medidorId, Classe classeId, Cliente clienteId) {
+    public Contrato(int id, String descricao, Timestamp dataInicio, Timestamp dataCriacao, Medidor medidorId, Classe classeId, Cliente clienteId) {
         this.descricao = descricao;
-        this.dataInicio = data_inicio;
+        this.dataInicio = dataInicio;
         this.dataCriacao = dataCriacao;
         this.medidorId = medidorId;
         this.classeId = classeId;
