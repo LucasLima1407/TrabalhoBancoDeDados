@@ -82,8 +82,8 @@ public class FuncionarioDAO extends ConexaoDB{
     public boolean updateFuncionarioi(Funcionario entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_FUNCIONARIO_SQL)) {
             statement.setString(1, entidade.getCodigoFuncionario());
-            statement.setInt(1, entidade.getPessoaId());
-            statement.setInt(2, entidade.getId());
+            statement.setInt(2, entidade.getPessoaId());
+            statement.setInt(3, entidade.getId());
 
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {

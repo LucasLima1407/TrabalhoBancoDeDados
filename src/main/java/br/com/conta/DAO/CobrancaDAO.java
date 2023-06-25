@@ -14,7 +14,7 @@ public class CobrancaDAO extends ConexaoDB {
     private static final String SELECT_COBRANCA_BY_ID = "SELECT id, mes_referencia, ano_referencia, tarifa_id, medicao_id FROM cobranca WHERE id = ?";
     private static final String SELECT_ALL_COBRANCA= "SELECT * FROM cobranca;";
     private static final String DELETE_COBRANCA_SQL = "DELETE FROM cobranca WHERE id = ?;";
-    private static final String UPDATE_COBRANCA_SQL = "UPDATE cobranca SET mes_referencia = ?, ano_referencia = ?, tarifa_id = ?, medicao_id = ?, WHERE id = ?;";
+    private static final String UPDATE_COBRANCA_SQL = "UPDATE cobranca SET mes_referencia = ?, ano_referencia = ?, tarifa_id = ?, medicao_id = ? WHERE id = ?;";
 
     private static TarifaDAO tarifaDAO = new TarifaDAO();
     private static MedicaoDAO medicaoDAO = new MedicaoDAO();

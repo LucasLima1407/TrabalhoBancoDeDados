@@ -71,7 +71,7 @@ public class TipoFaseDAO extends  ConexaoDB{
         }
     }
 
-    public boolean updatePessoa(TipoFase entidade) throws SQLException {
+    public boolean updateTipoFase(TipoFase entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_TIPO_FASE_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setInt(2, entidade.getId());

@@ -110,8 +110,9 @@ public class PessoaDAO extends  ConexaoDB{
         try (PreparedStatement statement = prepararSQL(UPDATE_PESSOA_SQL)) {
             statement.setString(1, entidade.getNome());
             statement.setString(2, entidade.getCpf());
-            statement.setInt(3, entidade.getTipoPessoaId());
-            statement.setInt(4, entidade.getId());
+            statement.setString(3, entidade.getCnpj());
+            statement.setInt(4, entidade.getTipoPessoaId());
+            statement.setInt(5, entidade.getId());
 
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
