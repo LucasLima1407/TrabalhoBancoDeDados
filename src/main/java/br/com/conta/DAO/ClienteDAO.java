@@ -9,11 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 public class ClienteDAO extends  ConexaoDB{
-    private static final String INSERT_CLIENTE_SQL = "INSERT INTO pessoa (id, num_documento, num_cliente, pessoa_id) VALUES (?, ?, ?, ?) ;";
-    private static final String SELECT_CLIENTE_BY_ID = "SELECT id, nome, cpf, cnpj, tipo_pessoa_id FROM pessoa WHERE id = ?";
-    private static final String SELECT_ALL_CLIENTE = "SELECT * FROM pessoa;";
-    private static final String DELETE_CLIENTE_SQL = "DELETE FROM pessoa WHERE id = ?;";
-    private static final String UPDATE_CLIENTE_SQL = "UPDATE pessoa SET nome = ?, cpf = ?, cnpj = ?, tipo_pessoa_id = ? WHERE id = ?;";
+    private static final String INSERT_CLIENTE_SQL = "INSERT INTO cliente (num_documento, num_cliente, pessoa_id) VALUES (?, ?, ?) ;";
+    private static final String SELECT_CLIENTE_BY_ID = "SELECT id, num_documento, num_cliente, pessoa_id FROM cliente WHERE id = ?";
+    private static final String SELECT_ALL_CLIENTE = "SELECT * FROM cliente;";
+    private static final String DELETE_CLIENTE_SQL = "DELETE FROM cliente WHERE id = ?;";
+    private static final String UPDATE_CLIENTE_SQL = "UPDATE pessoa SET num_documento = ?, num_cliente = ?, pessoa_id = ? WHERE id = ?;";
 
     PessoaDAO pessoaDAO = new PessoaDAO();
     public void insertCliente(Cliente entidade) {
@@ -21,6 +21,7 @@ public class ClienteDAO extends  ConexaoDB{
             preparedStatement.setString(1, entidade.getNumDocumento());
             preparedStatement.setString(2, entidade.getNumCliente());
             preparedStatement.setInt(3, entidade.getPessoaId());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
         } catch (ClassNotFoundException e) {
@@ -39,7 +40,7 @@ public class ClienteDAO extends  ConexaoDB{
                 String num_cliente = rs.getString("num_cliente");
                 int pessoa_id = rs.getInt("pessoa_id");
                 Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
-                entidade = new Cliente(id, num_documento, num_cliente, pessoa);
+                entidade = new Cliente(id, num_cliente, num_documento, pessoa);
             }
         } catch (SQLException e) {
             printSQLException(e);

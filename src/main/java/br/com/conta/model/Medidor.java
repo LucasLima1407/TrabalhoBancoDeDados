@@ -45,8 +45,8 @@ public class Medidor extends GenericModel {
         return "Medidor {" +
                 "id='" + this.getId() + "\'" +
                 "descricao='" + getDescricao() + "\'" +
-                "rota='" + getRotaId() + "\'" +
-                "poste='" + getPosteId() + "\'" +
+                "rota_id='" + getRotaId() + "\'" +
+                "poste_id='" + getPosteId() + "\'" +
                 '}';
     }
 }

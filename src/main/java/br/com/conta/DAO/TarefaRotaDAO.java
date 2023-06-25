@@ -117,6 +117,7 @@ public class TarefaRotaDAO extends ConexaoDB{
             statement.setTimestamp(3, entidade.getDataFinal());
             statement.setInt(4, entidade.getRotaId());
 
+
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

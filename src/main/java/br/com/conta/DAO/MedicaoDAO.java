@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 public class MedicaoDAO extends  ConexaoDB{
-    private static final String INSERT_MEDICAO_SQL = "INSERT INTO medicao (id, mes, ano, data_medicao, consumo, medidor_id, time_rota_id) VALUES (?, ?, ?, ?, ?, ?, ?) ;";
+    private static final String INSERT_MEDICAO_SQL = "INSERT INTO medicao (mes, ano, data_medicao, consumo, medidor_id, time_rota_id) VALUES (?, ?, ?, ?, ?, ?) ;";
     private static final String SELECT_MEDICAO_BY_ID = "SELECT id, mes, ano, lei, data_medicao, consumo, medidor_id, time_rota_id FROM medicao WHERE id = ?";
     private static final String SELECT_ALL_MEDICAO= "SELECT * FROM medicao;";
     private static final String DELETE_MEDICAO_SQL = "DELETE FROM medicao WHERE id = ?;";
@@ -27,7 +27,7 @@ public class MedicaoDAO extends  ConexaoDB{
             preparedStatement.setString(4, entidade.getConsumo());
             preparedStatement.setInt(5, entidade.getMedidorId());
             preparedStatement.setInt(6, entidade.getTimeRotaId());
-
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
         } catch (ClassNotFoundException e) {

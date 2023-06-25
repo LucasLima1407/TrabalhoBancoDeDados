@@ -39,7 +39,7 @@ public class Funcionario extends GenericModel {
         return "Funcionario {" +
                 "id='" + this.getId() + "\'" +
                 "codigoFuncionario='" + getCodigoFuncionario() + "\'" +
-                "pessoa='" + getPessoaId() + "\'" +
+                "pessoa_id='" + getPessoaId() + "\'" +
                 '}';
     }
 }

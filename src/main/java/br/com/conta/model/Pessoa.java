@@ -1,10 +1,8 @@
 package br.com.conta.model;
 
-import br.com.conta.DAO.TipoPessoaDAO;
 
 public class Pessoa extends GenericModel {
 
-    static private TipoPessoaDAO tipoPessoaDAO = new TipoPessoaDAO();
     private String nome;
     private String cpf;
 
@@ -16,7 +14,7 @@ public class Pessoa extends GenericModel {
     public Pessoa(Integer id, String nome, String cpf, TipoPessoa tipoPessoaId) {
         this.nome = nome;
         this.cpf = cpf;
-        this.tipoPessoaId = tipoPessoaId;
+       this.tipoPessoaId = tipoPessoaId;
         super.setId(id);
     }
 
@@ -39,18 +37,22 @@ public class Pessoa extends GenericModel {
         return cnpj;
     }
 
-    public int getIdTipoPessoa() {
+    public void setTipoPessoaId(TipoPessoa tipoPessoaId) {
+        this.tipoPessoaId = tipoPessoaId;
+    }
+
+    public Integer getTipoPessoaId() {
         return tipoPessoaId.getId();
     }
 
     @Override
     public String toString() {
-        return "pessoa { \n" +
+        return "Pessoa { \n" +
                 "\t id= '" + this.getId() + "\' \n" +
                 "\t nome = '" + getNome() + "\' \n" +
                 "\t cpf = '" + getCpf() + "\' \n"  +
                 "\t cnpj = '" + getCnpj() + "\' \n"  +
-                "\t tipo_pessoa =  " + getIdTipoPessoa() + "\n" +
+                "\t tipo_pessoa_id =  " + getTipoPessoaId() + "\n" +
                 "\t }";
     }
 }

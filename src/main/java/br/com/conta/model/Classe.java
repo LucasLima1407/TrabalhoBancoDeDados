@@ -36,7 +36,7 @@ public class Classe extends GenericModel{
         return "Classe {" +
                 "id='" + this.getId() + "\'" +
                 "descricao='" + getDescricao() + "\'" +
-                "tipo_fase='" + getTipoFaseId() + "\'" +
+                "tipo_fase_id='" + getTipoFaseId() + "\'" +
                 '}';
     }
 }

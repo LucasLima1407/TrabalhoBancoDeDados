@@ -46,7 +46,6 @@ public class TimeRotaDAO extends ConexaoDB{
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_TIME_ROTA_SQL)) {
             preparedStatement.setInt(1, entidade.getFuncionarioId());
             preparedStatement.setInt(2, entidade.getTarefaRotaId());
-
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 public class CobrancaDAO extends ConexaoDB {
-    private static final String INSERT_COBRANCA_SQL = "INSERT INTO cobranca (id, mes_referencia, ano_referencia, tarifa_id, medicao_id) VALUES (?, ?, ?, ?, ?) ;";
+    private static final String INSERT_COBRANCA_SQL = "INSERT INTO cobranca (mes_referencia, ano_referencia, tarifa_id, medicao_id) VALUES (?, ?, ?, ?) ;";
     private static final String SELECT_COBRANCA_BY_ID = "SELECT id, mes_referencia, ano_referencia, tarifa_id, medicao_id FROM cobranca WHERE id = ?";
     private static final String SELECT_ALL_COBRANCA= "SELECT * FROM cobranca;";
     private static final String DELETE_COBRANCA_SQL = "DELETE FROM cobranca WHERE id = ?;";

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 public class ClasseDAO extends  ConexaoDB{
-    private static final String INSERT_CLASSE_SQL = "INSERT INTO classe (id, descricao, tipo_fase_id) VALUES (?, ?, ?) ;";
+    private static final String INSERT_CLASSE_SQL = "INSERT INTO classe (descricao, tipo_fase_id) VALUES (?, ?) ;";
     private static final String SELECT_CLASSE_BY_ID = "SELECT id, descricao, tipo_fase_id FROM classe WHERE id = ?";
     private static final String SELECT_ALL_CLASSE= "SELECT * FROM classe;";
     private static final String DELETE_CLASSE_SQL = "DELETE FROM classe WHERE id = ?;";
@@ -19,7 +19,8 @@ public class ClasseDAO extends  ConexaoDB{
     public void insertClasse(Classe entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_CLASSE_SQL)) {
             preparedStatement.setString(1, entidade.getDescricao());
-            preparedStatement.setInt(2, entidade.getTipoFaseModel());
+            preparedStatement.setInt(2, entidade.getTipoFaseId());
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             printSQLException(e);
@@ -80,7 +81,7 @@ public class ClasseDAO extends  ConexaoDB{
     public boolean updateClasse(Classe entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_CLASSE_SQL)) {
             statement.setString(1, entidade.getDescricao());
-            statement.setInt(2, entidade.getTipoFaseModel());
+            statement.setInt(2, entidade.getTipoFaseId());
             statement.setInt(3, entidade.getId());
 
             return statement.executeUpdate() > 0;

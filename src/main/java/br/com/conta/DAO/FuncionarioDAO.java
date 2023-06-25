@@ -17,7 +17,7 @@ public class FuncionarioDAO extends ConexaoDB{
     private static final String UPDATE_FUNCIONARIO_SQL = "UPDATE funcionario SET codigo_funcional = ?, pessoa_id = ? WHERE id = ?;";
 
     PessoaDAO pessoaDAO = new PessoaDAO();
-    public void insertFuncionarioSQL(Funcionario entidade) {
+    public void insertFuncionario(Funcionario entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_FUNCIONARIO_SQL)) {
             preparedStatement.setString(1, entidade.getCodigoFuncionario());
             preparedStatement.setInt(2, entidade.getPessoaId());

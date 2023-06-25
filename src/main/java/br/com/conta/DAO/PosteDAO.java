@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 public class PosteDAO extends  ConexaoDB{
-    private static final String INSERT_POSTE_SQL = "INSERT INTO poste(id, latitude, longitude, codigo, observacao) VALUES (?, ?, ?, ?, ?, ?, ?) ;";
+    private static final String INSERT_POSTE_SQL = "INSERT INTO poste (latitude, longitude, codigo, observacao) VALUES (?, ?, ?, ?) ;";
     private static final String SELECT_POSTE_BY_ID = "SELECT id, latitude, longitude, codigo, observacao FROM poste WHERE id = ?";
     private static final String SELECT_ALL_POSTE= "SELECT * FROM poste;";
     private static final String DELETE_POSTE_SQL = "DELETE FROM poste WHERE id = ?;";
@@ -20,6 +20,7 @@ public class PosteDAO extends  ConexaoDB{
             preparedStatement.setString(2, entidade.getLongitude());
             preparedStatement.setString(3, entidade.getCodigo());
             preparedStatement.setString(4, entidade.getObservacao());
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             printSQLException(e);

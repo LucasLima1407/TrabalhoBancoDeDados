@@ -42,7 +42,7 @@ public class TarefaRota extends  GenericModel {
                 "\t observacao=" + getObervacao() + "\n" +
                 "\t dataInicio= " + getDataInicio() + "\n" +
                 "\t dataFinal="+ getDataFinal() + "\n"+
-                "\t rota = " + getRotaId() +
+                "\t rota_id = " + getRotaId() +
                 "\t } ";
     }
 }

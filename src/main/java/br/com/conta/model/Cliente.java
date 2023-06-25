@@ -11,13 +11,13 @@ public class Cliente extends GenericModel{
     static private final PessoaDAO pessoaDAO = new PessoaDAO();
 
     public Cliente(String numDocumento, String numCliente, Pessoa pessoaId) {
+        this.numDocumento = numDocumento;
         this.numCliente = numCliente;
-        this.numDocumento = numCliente;
         this.pessoaId = pessoaId;
     }
     public Cliente(Integer id, String numCliente, String numDocumento, Pessoa pessoaId){
-        this.numCliente = numCliente;
         this.numDocumento = numDocumento;
+        this.numCliente = numCliente;
         this.pessoaId = pessoaId;
         super.setId(id);
     }

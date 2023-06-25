@@ -84,8 +84,8 @@ public class Medicao extends GenericModel {
                 "mes='" + getMes() + "\'" +
                 "dataMedicao='" + getDataMedicao() + "\'" +
                 "consumo='" + getConsumo() + "\'" +
-                "medidorId='" + getMedidorId() + "\'" +
-                "timeRotaId='" + getTimeRotaId() + "\'" +
+                "medidor_id='" + getMedidorId() + "\'" +
+                "timeRota_id='" + getTimeRotaId() + "\'" +
                 '}';
     }
 }

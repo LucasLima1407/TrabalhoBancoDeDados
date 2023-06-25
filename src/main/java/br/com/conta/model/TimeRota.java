@@ -28,8 +28,8 @@ public class TimeRota extends GenericModel{
     public String toString() {
         return "tarefa_rota { \n" +
                 "\t id='" + this.getId() + "\' \n"  +
-                "\t funcionario = " + getFuncionarioId() + "\n" +
-                "\t tarefa = " +  getTarefaRotaId() + "\n" +
+                "\t funcionario_id = " + getFuncionarioId() + "\n" +
+                "\t tarefa_rota_id = " +  getTarefaRotaId() + "\n" +
                 "\t } ";
     }
 

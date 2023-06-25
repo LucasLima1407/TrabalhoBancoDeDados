@@ -35,18 +35,17 @@ public class PessoaDAO extends  ConexaoDB{
     }
     public void insertPessoa(Pessoa entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_PESSOA_SQL)) {
-            System.out.println(entidade.getCpf());
             preparedStatement.setString(1, entidade.getNome());
             preparedStatement.setString(2, entidade.getCpf());
-            preparedStatement.setInt(3, entidade.getIdTipoPessoa());
+            preparedStatement.setInt(4, entidade.getTipoPessoaId());
 
             if (entidade.getCnpj() == null || entidade.getCnpj().isEmpty()) {
-                preparedStatement.setNull(4, 0);
+                preparedStatement.setNull(3, 0);
                 preparedStatement.executeUpdate();
                 return;
             }
 
-            preparedStatement.setString(4, entidade.getCnpj());
+            preparedStatement.setString(3, entidade.getCnpj());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -67,8 +66,7 @@ public class PessoaDAO extends  ConexaoDB{
                 String cpf = rs.getString("cpf");
                 Integer tipo_pessoa_id = rs.getInt("tipo_pessoa_id");
                 TipoPessoa tipo_pessoa = tipoPessoaDao.selectTipoPessoaById(tipo_pessoa_id);
-                String cnpj = rs.getString("cnpj");
-                entidade = new Pessoa(id, nome, cpf, tipo_pessoa , cnpj);
+                entidade = new Pessoa(id, nome, cpf, tipo_pessoa);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -89,8 +87,7 @@ public class PessoaDAO extends  ConexaoDB{
                 String cpf = rs.getString("cpf");
                 Integer tipo_pessoa_id = rs.getInt("tipo_pessoa_id");
                 TipoPessoa tipo_pessoa = tipoPessoaDao.selectTipoPessoaById(tipo_pessoa_id);
-                String cnpj = rs.getString("cnpj");
-                entidades.add(new Pessoa(id, nome, cpf, tipo_pessoa, cnpj));
+                entidades.add(new Pessoa(id, nome, cpf, tipo_pessoa));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -113,7 +110,7 @@ public class PessoaDAO extends  ConexaoDB{
         try (PreparedStatement statement = prepararSQL(UPDATE_PESSOA_SQL)) {
             statement.setString(1, entidade.getNome());
             statement.setString(2, entidade.getCpf());
-            statement.setInt(3, entidade.getIdTipoPessoa());
+            statement.setInt(3, entidade.getTipoPessoaId());
             statement.setInt(4, entidade.getId());
 
             return statement.executeUpdate() > 0;
